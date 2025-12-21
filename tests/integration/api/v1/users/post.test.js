@@ -13,8 +13,8 @@ describe("POST /api/v1/users", () => {
       const expectedUser = {
         username: "andersonn-roberto",
         email: "andersonn.roberto@gmail.com",
-        password: "senha123"
-      }
+        password: "senha123",
+      };
 
       const response = await fetch("http://localhost:3000/api/v1/users", {
         method: "POST",
@@ -34,7 +34,7 @@ describe("POST /api/v1/users", () => {
         email: expectedUser.email,
         password: expectedUser.password,
         created_at: responseBody.created_at,
-        updated_at: responseBody.updated_at
+        updated_at: responseBody.updated_at,
       });
 
       expect(uuidVersion(responseBody.id)).toBe(4);
@@ -47,13 +47,13 @@ describe("POST /api/v1/users", () => {
         {
           username: "emailduplicado1",
           email: "duplicado@test.com",
-          password: "senha123"
+          password: "senha123",
         },
         {
           username: "emailduplicado2",
           email: "Duplicado@test.com",
-          password: "senha123"
-        }
+          password: "senha123",
+        },
       ];
 
       const response1 = await fetch("http://localhost:3000/api/v1/users", {
@@ -91,13 +91,13 @@ describe("POST /api/v1/users", () => {
         {
           username: "usernameduplicado",
           email: "usernameduplicado1@test.com",
-          password: "senha123"
+          password: "senha123",
         },
         {
           username: "UsernameDuplicado",
           email: "usernameduplicado2@test.com",
-          password: "senha123"
-        }
+          password: "senha123",
+        },
       ];
 
       const response1 = await fetch("http://localhost:3000/api/v1/users", {

@@ -13,7 +13,7 @@ describe("GET /api/v1/users/[username]", () => {
       const expectedUser = {
         username: "MesmoCase",
         email: "mesmo.case@test.com",
-        password: "senha123"
+        password: "senha123",
       };
 
       const response1 = await fetch("http://localhost:3000/api/v1/users", {
@@ -26,7 +26,9 @@ describe("GET /api/v1/users/[username]", () => {
 
       expect(response1.status).toBe(201);
 
-      const response2 = await fetch(`http://localhost:3000/api/v1/users/MesmoCase`);
+      const response2 = await fetch(
+        `http://localhost:3000/api/v1/users/MesmoCase`,
+      );
 
       expect(response2.status).toBe(200);
 
@@ -38,7 +40,7 @@ describe("GET /api/v1/users/[username]", () => {
         email: expectedUser.email,
         password: expectedUser.password,
         created_at: response2Body.created_at,
-        updated_at: response2Body.updated_at
+        updated_at: response2Body.updated_at,
       });
 
       expect(uuidVersion(response2Body.id)).toBe(4);
@@ -50,7 +52,7 @@ describe("GET /api/v1/users/[username]", () => {
       const expectedUser = {
         username: "CaseDiferente",
         email: "case.diferente@test.com",
-        password: "senha123"
+        password: "senha123",
       };
 
       const response1 = await fetch("http://localhost:3000/api/v1/users", {
@@ -63,7 +65,9 @@ describe("GET /api/v1/users/[username]", () => {
 
       expect(response1.status).toBe(201);
 
-      const response2 = await fetch(`http://localhost:3000/api/v1/users/casediferente`);
+      const response2 = await fetch(
+        `http://localhost:3000/api/v1/users/casediferente`,
+      );
 
       expect(response2.status).toBe(200);
 
@@ -75,7 +79,7 @@ describe("GET /api/v1/users/[username]", () => {
         email: expectedUser.email,
         password: expectedUser.password,
         created_at: response2Body.created_at,
-        updated_at: response2Body.updated_at
+        updated_at: response2Body.updated_at,
       });
 
       expect(uuidVersion(response2Body.id)).toBe(4);
@@ -84,7 +88,9 @@ describe("GET /api/v1/users/[username]", () => {
     });
 
     test("With nonexistent username", async () => {
-      const response = await fetch(`http://localhost:3000/api/v1/users/UsuarioInexistente`);
+      const response = await fetch(
+        `http://localhost:3000/api/v1/users/UsuarioInexistente`,
+      );
 
       expect(response.status).toBe(404);
 
@@ -94,7 +100,7 @@ describe("GET /api/v1/users/[username]", () => {
         name: "NotFoundError",
         message: "O username informado não foi encontrado no sistema.",
         action: "Verifique se o username está digitado corretamente.",
-        status_code: 404
+        status_code: 404,
       });
     });
   });
