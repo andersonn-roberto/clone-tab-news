@@ -10,15 +10,15 @@ async function findOneById(id) {
   async function runSelectQuery(id) {
     const results = await database.query({
       text: `
-          SELECT
-            *
-          FROM
-            users
-          WHERE
-            id = $1
-          LIMIT
-            1
-          ;`,
+        SELECT
+          *
+        FROM
+          users
+        WHERE
+          id = $1
+        LIMIT
+          1
+        ;`,
       values: [id],
     });
 
@@ -41,15 +41,15 @@ async function findOneByUsername(username) {
   async function runSelectQuery(username) {
     const results = await database.query({
       text: `
-          SELECT
-            *
-          FROM
-            users
-          WHERE
-            LOWER(username) = LOWER($1)
-          LIMIT
-            1
-          ;`,
+        SELECT
+          *
+        FROM
+          users
+        WHERE
+          LOWER(username) = LOWER($1)
+        LIMIT
+          1
+        ;`,
       values: [username],
     });
 
@@ -72,15 +72,15 @@ async function findOneByEmail(email) {
   async function runSelectQuery(email) {
     const results = await database.query({
       text: `
-          SELECT
-            *
-          FROM
-            users
-          WHERE
-            LOWER(email) = LOWER($1)
-          LIMIT
-            1
-          ;`,
+        SELECT
+          *
+        FROM
+          users
+        WHERE
+          LOWER(email) = LOWER($1)
+        LIMIT
+          1
+        ;`,
       values: [email],
     });
 
@@ -107,13 +107,13 @@ async function create(userInputValues) {
   async function runInsertQuery(userInputValues) {
     const result = await database.query({
       text: `
-          INSERT INTO
-            users (username, email, password, features)
-          VALUES
-            ($1, $2, $3, $4)
-          RETURNING
-            *
-          ;`,
+        INSERT INTO
+          users (username, email, password, features)
+        VALUES
+          ($1, $2, $3, $4)
+        RETURNING
+          *
+        ;`,
       values: [
         userInputValues.username,
         userInputValues.email,
@@ -180,13 +180,13 @@ async function update(username, userInputValues) {
 async function validateUniqueUsername(username) {
   const results = await database.query({
     text: `
-          SELECT
-            1
-          FROM
-            users
-          WHERE
-            LOWER(username) = LOWER($1)
-          ;`,
+      SELECT
+        1
+      FROM
+        users
+      WHERE
+        LOWER(username) = LOWER($1)
+      ;`,
     values: [username],
   });
 
@@ -201,13 +201,13 @@ async function validateUniqueUsername(username) {
 async function validateUniqueEmail(email) {
   const results = await database.query({
     text: `
-          SELECT
-            1
-          FROM
-            users
-          WHERE
-            LOWER(email) = LOWER($1)
-          ;`,
+      SELECT
+        1
+      FROM
+        users
+      WHERE
+        LOWER(email) = LOWER($1)
+      ;`,
     values: [email],
   });
 

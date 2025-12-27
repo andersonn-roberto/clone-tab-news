@@ -18,16 +18,16 @@ async function markTokenAsUsed(activationTokenId) {
   async function runUpdateQuery(activationTokenId) {
     const results = await database.query({
       text: `
-              UPDATE
-                user_activation_tokens
-              SET
-                used_at = timezone('utc', now()),
-                updated_at = timezone('utc', now())
-              WHERE
-                id = $1
-              RETURNING
-                *
-            `,
+        UPDATE
+          user_activation_tokens
+        SET
+          used_at = timezone('utc', now()),
+          updated_at = timezone('utc', now())
+        WHERE
+          id = $1
+        RETURNING
+          *
+      `,
       values: [activationTokenId],
     });
 
