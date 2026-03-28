@@ -59,7 +59,7 @@ describe("POST /api/v1/users", () => {
       expect(incorrectPasswordMatch).toBe(false);
     });
 
-    test("With duplicated 'email'", async () => {
+    test("With duplicated `email`", async () => {
       const expectedUsers = [
         {
           username: "emailduplicado1",
@@ -103,7 +103,7 @@ describe("POST /api/v1/users", () => {
       });
     });
 
-    test("With duplicated 'username'", async () => {
+    test("With duplicated `username`", async () => {
       const expectedUsers = [
         {
           username: "usernameduplicado",
